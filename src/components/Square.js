@@ -2,7 +2,7 @@ import React from 'react'
 import '../style.sass'
 
 const Square = ({ onClick, value }) => (
-    <button onClick={onClick}>
+    <button className='square' onClick={onClick}>
         {value}
     </button>
 )
