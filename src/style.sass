@@ -63,81 +63,57 @@
   width: calc(50vw - 30vh)
   button
     margin: 0 auto
-    width: 150px
+    width: calc((50vw - 30vh) / 2)
+.controllerVictory
+  width: 30vh
+  text-align: center
+  font-size: 10vh
+  font-weight: bold
+  color: yellow
+  align-self: center
+  overflow: hidden
+  width: 30vh
+.controllerVictoryWin
+  transform-origin: left bottom 0
+  animation: win .5s 1 linear
+.controllerVictoryLose
+  animation: lose 1s 1 linear
+.controllerVictoryWinO
+  transform-origin: right bottom 0
+  animation: winO .5s 1 linear
+.controllerVictoryLoseO
+  animation: loseO 1s 1 linear
 
+@keyframes win
+  0%
+    transform: rotate(-90deg)
+  80%
+    transform: rotate(5deg)
+  100%
+    transform: rotate(0deg)
+@keyframes lose
+  0%
+    transform: translateX(-100%)
+  50%
+    transform: translateX(-100%)
+  80%
+    transform: translateX(10%)
+  100%
+    transform: translateX(0)
 
-
-.scoreBoard
-  grid-column: 2/6
-  grid-row: 7/-1
-  background: green
-//.X
-  grid-column: 6/10
-  grid-row: 4/-1
-  background: blue
-
-
-
-
-
-
-
-//@media (max-width: 786px)
-  .commonScoreBoard
-    display: none
-  .mobileScoreBoard
-    display: flex
-    height: calc((100vh - 100vw) / 2)
-  .scoreBordInner
-    width: 100vw
-    height: calc((100vh - 100vw) / 2)
-    button
-      width: 15vw
-      -webkit-appearance: none
-    .scoreBordData
-      width: 85vw
-      height: calc((100vh - 100vw) / 2)
-      button
-        height: calc((100vh - 100vw) / 6)
-  .board
-    width: 100vw
-    height: 100vw
-    background: #000
-    grid-gap: 0.5vw
-  .square
-    width: 33vw
-    height: 33vw
-    font-size: 50px
-    border: none
-  .X
-    transform: rotate(180deg)
-
-
-
-  .scoreBoard
-  grid-column: 1/4
-  grid-row: 4/-1
-  margin: 0 auto
-  display: flex
-  border: 1px solid black
-  button
-    width: 84px
-    -webkit-appearance: none
-  .scoreBordInner
-  width: 250px
-  height: 99px
-  background: red
-  display: flex
-  button
-    -webkit-appearance: none
-  .scoreBordData
-    flex-direction: column
-    button
-      padding: 0
-      margin: 0
-      width: 100%
-      height: 33px
-      -webkit-appearance: none
-  .X
-  grid-column: 4/8
-  grid-row: 4/-1
+@keyframes winO
+  0%
+    transform: rotate(90deg)
+  80%
+    transform: rotate(-5deg)
+  100%
+    transform: rotate(0deg)
+@keyframes loseO
+  0%
+    transform: translateX(100%)
+  50%
+    transform: translateX(100%)
+  80%
+    transform: translateX(-10%)
+  100%
+    transform: translateX(0)

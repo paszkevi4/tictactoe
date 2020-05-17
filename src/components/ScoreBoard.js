@@ -15,9 +15,26 @@ export const ScoreBoard = ({restart, returnMove, winner, draw, concede, xIsNext,
                 }
                 <Button variant="danger" onClick={  () => concede() }>Concede</Button>
             </div>
-            <div className='controllerVictory'>
-                win
-            </div>
+            {player === 'X'
+                ? <div className='controllerVictory'>
+                    {winner
+                        ? winner == player
+                            ? <div className='controllerVictoryWin'>WIN</div>
+                            : <div className='controllerVictoryLose'>LOSE</div>
+                        : null
+                    }
+                </div>
+                : <div className='controllerVictory'>
+                    {winner
+                        ? winner == player
+                            ? <div className='controllerVictoryWinO'>WIN</div>
+                            : <div className='controllerVictoryLoseO'>LOSE</div>
+                        : null
+                    }
+                </div>
+            }
+
+
 
         </div>
     )

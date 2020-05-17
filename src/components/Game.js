@@ -75,16 +75,16 @@ const Game = () => {
             {/*<p>{winner ? 'The winner is ' + winner : 'Next player is: ' + (xIsNext ? 'X' : 'O' )}</p>
             <button onClick={() => console.log(step, draw)}>123</button>*/}
             <div className='score score--O'>
-                <Score name={'O'} count={countO}/>
+                <Score count={countO} />
             </div>
             <div className='score score--X'>
-                <Score name={'X'} count={countX}/>
+                <Score count={countX} player={'X'} />
             </div>
             <Board squares={history[step]} onClick={handleClick}/>
             <ScoreBoard winner={winner} draw={draw} returnMove={returnMove}
-                        restart={restart} concede={Oconceded} xIsNext={xIsNext}/>
+                        restart={restart} concede={Oconceded} xIsNext={xIsNext} player={'O'} />
             <ScoreBoard winner={winner} draw={draw} returnMove={returnMove}
-                        restart={restart} concede={Xconceded} xIsNext={xIsNext} player={'X'}/>
+                        restart={restart} concede={Xconceded} xIsNext={xIsNext} player={'X'} />
 
             {/*<div className='scoreBoard'>
                 <ScoreBoard name={'O'} restart={restart} returnMove={returnMove}
