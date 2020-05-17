@@ -1,18 +1,24 @@
 import React from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import Button from 'react-bootstrap/Button'
 import '../style.sass'
 
-export const ScoreBoard = ({name, restart, returnMove, count, winner, draw, concede}) => (
-        <div className='scoreBordInner'>
-            <div className='scoreBordData'>
-                <button>you are playing for {name}</button>
+export const ScoreBoard = ({restart, returnMove, winner, draw, concede, xIsNext, player}) => {
+    return (
+        <div className={'controllers' + ' ' + `${player ? player : ' '}`} >
+            <div className='controllerButtons'>
                 {winner
-                    ? <button onClick={ () => restart() }>next round</button>
+                    ? <Button variant="success" onClick={() => restart()}>next round</Button>
                     : draw
-                        ? <button onClick={ () => restart() }>next round</button>
-                        :<button onClick={ () => returnMove() }>return move</button>
+                        ? <Button variant="success" onClick={() => restart()}>next round</Button>
+                        : <Button variant="primary" onClick={!player === xIsNext ? () => returnMove() : null}>return move</Button>
                 }
-                <button onClick={ () => concede() }>concede</button>
+                <Button variant="danger" onClick={  () => concede() }>Concede</Button>
             </div>
-            <button>{count}</button>
+            <div className='controllerVictory'>
+                win
+            </div>
+
         </div>
-)
+    )
+}

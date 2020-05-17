@@ -3,6 +3,8 @@ import '../style.sass'
 import { calculateWinner } from '../helpers'
 import Board from './Board'
 import {ScoreBoard} from './ScoreBoard'
+import Score from './ScoreHolder'
+
 
 
 const Game = () => {
@@ -38,7 +40,7 @@ const Game = () => {
         setHistory([...current, newHistory])
         setStep(current.length)
         setXIsNext(!xIsNext)
-        if (history.length == 9) {
+        if (history.length === 9) {
             setDraw(true)
             setCountX(++countX)
             setCountO(++countO)
@@ -64,28 +66,30 @@ const Game = () => {
     //clears the bord
     const restart = () => {
         setHistory([Array(9).fill(null)])
+        setDraw(false)
         setStep(0)
     }
 
     return (
-        <div>
+        <div className='main'>
             {/*<p>{winner ? 'The winner is ' + winner : 'Next player is: ' + (xIsNext ? 'X' : 'O' )}</p>
             <button onClick={() => console.log(step, draw)}>123</button>*/}
-            <div className='mobileScoreBoard X'>
-                <ScoreBoard name={'X'} restart={restart} returnMove={returnMove}
-                            count={countX} winner={winner} draw={draw} concede={Xconceded}/>
+            <div className='score score--O'>
+                <Score name={'O'} count={countO}/>
+            </div>
+            <div className='score score--X'>
+                <Score name={'X'} count={countX}/>
             </div>
             <Board squares={history[step]} onClick={handleClick}/>
-            <div className='commonScoreBoard'>
-                <ScoreBoard name={'X'} restart={restart} returnMove={returnMove}
-                            count={countX} winner={winner} draw={draw} concede={Xconceded}/>
+            <ScoreBoard winner={winner} draw={draw} returnMove={returnMove}
+                        restart={restart} concede={Oconceded} xIsNext={xIsNext}/>
+            <ScoreBoard winner={winner} draw={draw} returnMove={returnMove}
+                        restart={restart} concede={Xconceded} xIsNext={xIsNext} player={'X'}/>
+
+            {/*<div className='scoreBoard'>
                 <ScoreBoard name={'O'} restart={restart} returnMove={returnMove}
                             count={countO} winner={winner} draw={draw} concede={Oconceded}/>
-            </div>
-            <div className='mobileScoreBoard'>
-                <ScoreBoard name={'O'} restart={restart} returnMove={returnMove}
-                            count={countO} winner={winner} draw={draw} concede={Oconceded}/>
-            </div>
+            </div>*/}
         </div>
     )
 }
